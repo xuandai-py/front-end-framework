@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://www.pngkey.com/png/full/420-4203829_otaku-usa-magazine-magazine-covers-anime.png" type="image/png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body ng-app="myapp">
+    <!---------------------------header navigation----------------------------------------->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+                    <span class="sr-only">navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="../images/W3Schools_logo1.png" style="width:60%;"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-main">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="home.html" class="active"> Home</a></li>
+                    <li><a href="home.html#about_us"> About Us</a> </li>
+                    <li><a href="home.html#contact">Contact</a></li>
+                    <li><a href="home.html#feedback">Feedback</a></li>
+                    <li><a href="home.html#fag"> F&A</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"></span> Account <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#myModal">Log In</a></li>
+                            <li><a href="">Forgot Password</a></li>
+                            <li><a href="sign_up.html">Sign Up</a></li>
+                            <li class="divider"></li>
+                            <li><a href="">Log Out</a></li>
+                            <li><a href="SuaDoi.html">Change Password</a></li>
+                            <li><a href="SuaDoi.html">Profile</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title title1"><span style="color:orange">Log In</span></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="login.php?q=index.php" method="POST">
+                        <fieldset>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="email"></label>
+                                <div class="col-md-6">
+                                    <input id="email" name="email" placeholder="Enter your email-id" class="form-control input-md" type="email">
+                                </div>
+                            </div>
+                            <!-- Password input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="password"></label>
+                                <div class="col-md-6">
+                                    <input id="password" name="password" placeholder="Enter your Password" class="form-control input-md" type="password">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-fade -->
+    <!---------------------------main----------------------------------------->
+    <article>
+        <!---------------------------banner----------------------------------------->
+        <section id="banner">
+
+            <div class="login-wrapper" ng-controller="sign_up">
+                <div class="login-inner">
+                    <form ng-submit="submitExpense(expenseInfo)">
+                        <div ng-model="expenseInfo">
+                            <h2 class="header-title text-center">SIGN UP</h2>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <input placeholder="Enter your fullname" class="form-control input-md" type="text" ng-model="expenseInfo.fullname">
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <select placeholder="Enter your gender" class="form-control input-md" ng-model="expenseInfo.gender">
+                                    <option value="Male">Select Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+
+
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <input placeholder="Enter your email-id" class="form-control input-md" type="email" ng-model="expenseInfo.email">
+                            </div>
+
+                            <!-- Text input-->
+                            <!-- <div class="form-group">
+                            <input id="mob" name="mob" placeholder="Enter your mobile number"
+                                class="form-control input-md" type="number">
+                        </div> -->
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <input placeholder="Enter your username" class="form-control input-md" type="text" ng-model="expenseInfo.username">
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <input placeholder="Enter your password" class="form-control input-md" type="password" ng-model="expenseInfo.password">
+                            </div>
+
+                            <div class="form-group">
+                                <input placeholder="Confirm password" class="form-control input-md" type="password">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="SIGN UP" class="btn btn-primary btn-block">
+                            </div>
+                            <div class="form-group text-center">
+                                ALREADY HAVE ACCOUNT?<a href="" data-toggle="modal" data-target="#myModal"> LOG IN</a>
+                            </div>
+                        </div>
+                    </form>
+                    <pre>{{expenses|json}}</pre>
+
+                </div>
+            </div>
+
+        </section>
+
+    </article>
+    <script>
+        var app = angular.module('myapp', []);
+        app.controller('sign_up', function($scope) {
+            $scope.expenses = [];
+            $scope.submitExpense = function(expenseInfo) {
+                $scope.expenses.push(expenseInfo);
+            }
+
+        });
+
+        fessmodule.$inject = ['$scope'];
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://www.pngkey.com/png/full/420-4203829_otaku-usa-magazine-magazine-covers-anime.png" type="image/png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.js"></script> -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="../css/home.css">
+
+    <style>
+        .container {
+            min-height: 960px;
+        }
+        
+        a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+        }
+        
+        a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .previous,
+        .next {
+            background-color: #f1f1f1;
+            color: black;
+        }
+        
+        .isCorrect_true {
+            background-color: rgba(66, 105, 66, 0.465);
+        }
+        
+        .isCorrect_false {
+            background-color: rgba(149, 95, 95, 0.616);
+        }
+    </style>
+</head>
+
+<body ng-app="quiz">
+    <!---------------------------header navigation----------------------------------------->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+                    <span class="sr-only">navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="../images/W3Schools_logo1.png" style="width:60%;"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-main">
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="home.html" class="active"> Home</a></li>
+                    <li><a href="#"> History </a> </li>
+                    <li><a href="#">Top rank</a></li>
+                    <li><a href="#">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <!---------------------------main----------------------------------------->
+    <article class="container" id="sheet-space">
+        <!---------------------------banner----------------------------------------->
+
+        <aside class="col-sm-3">
+            <div class="panel-group" id="accordion">
+
+                <!--Category-->
+                <div class="panel panel-default" ng-controller="myctrl">
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" href="#collapse1">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            <strong>DANH MỤC MÔN HỌC</strong>
+                        </a>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapse1">
+                        <ul class="list-group">
+                            <li href="#" class="list-group-item" ng-repeat="sub in subjects">
+                                <span>{{sub.Name|uppercase}}</span></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <!--/Category-->
+
+            </div>
+        </aside>
+        <section class="col-sm-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Lập trình PHP >> LAB1 >> QUIZ1 >> Question1</div>
+            </div>
+            <div ng-controller="timerController">
+                <h1>You have: {{remainingTime}}s left</h1>
+            </div>
+            <!-- <div class="panel panel-default" ng-controller="QuizController">
+
+                <ul class="unstyled">
+                    <li ng-repeat="question in questions">
+                        <strong class="question">{{ question.questionText }}</strong>
+                        <ul class="unstyled" id="quest_{{$parent.$index}}">
+                            <li ng-repeat="answer in question.answers">
+                                <label class="isCorrect_{{answer.selected}}" for="quest_{{$parent.$index}}_answer_{{$index}}">
+                          <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}" 
+                          ng-model="answers[$parent.$index]" value="{{ answer.answerText }}"  name="quest_{{$parent.$index}}_answers" />{{ answer.answerText }}</label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="panel panel-default" ng-controller="QuizController2">
+
+                <ul class="unstyled">
+                    <li ng-repeat="question in quizss">
+                        <strong class="question">{{ question.questionText }}</strong>
+                        <ul class="unstyled" id="quest_{{$parent.$index}}">
+                            <li ng-repeat="answer in question.answers">
+                                <label class="isCorrect_{{answer.selected}}" for="quest_{{$parent.$index}}_answer_{{$index}}">
+                          <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}" 
+                          ng-model="answers[$parent.$index]" value="{{ answer.answerText }}"  name="quest_{{$parent.$index}}_answers" />{{ answer.answerText }}</label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div> -->
+
+            <div ng-controller="QuizController3">
+                <div class="panel panel-default">
+                    <ul class="unstyled">
+                        <li ng-repeat="question in questions|orderBy:prop|limitTo:2:begin">
+                            <strong class="question">{{ question.Text }}</strong>
+                            <ul class="unstyled" id="quest_{{$parent.$index}}">
+                                <li ng-repeat="answer in question.Answers">
+                                    <label class="isCorrect_{{answer.selected}}" for="quest_{{$parent.$index}}_answer_{{$index}}">
+                                        <input type="radio" id="quest_{{$parent.$index}}_answer_{{$index}}"
+                                            ng-model="answers[$parent.$index]" value="{{ answer.Text }}"
+                                            name="quest_{{$parent.$index}}_answers" />{{ answer.Text }}</label>
+
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="pager">
+
+                        <li>
+                            <a href="#" ng-click="prev()" class="previous">&laquo; Previous </a>
+                        </li>
+                        <li>
+                            <a href="#" ng-click="next()" class="next">Next &raquo;</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <button class="btn" type="submit" ng:click="showResult()">Submit</button>
+                <div class="well">
+                    <p>you got {{ correctCount }} out of {{questions.length}} right</p>
+
+                </div>
+            </div>
+        </section>
+    </article>
+    <!-- <script src="../db/Subjects.js"></script> -->
+    <!-- <script src="../db/Quizs/ADAV2.js"></script> -->
+    <!-- <script type="text/javascript" src="../js/sheet.js"></script> -->
+    <!-- <script type="text/javascript" src="../js/timer.js"></script> -->
+    <script>
+        angular.module("quiz", [])
+            .controller("myctrl", function($scope, $http) {
+                $scope.subjects = [];
+                $http.get("../db/ob/Subjects.js").then(function(response) {
+                    $scope.subjects = response.data;
+                });
+            })
+            /*    
+                app.controller("QuizController", function($scope, $http) {
+                    $scope.questions = que;
+                });
+        
+                app.controller("QuizController2", function($scope, $http) {
+                    $scope.quizss = [];
+                    $http.get("../db/Quizs/ADAV3.js").then(function(response) {
+                        $scope.quizss = response.data;
+                    });
+                });
+            */
+            .controller("QuizController3", function($scope, $http) {
+                $scope.questions = [];
+                $http.get("../db/Quizs/ADAV.js").then(function(response) {
+                    $scope.questions = response.data;
+
+
+                    $scope.prop = "Id";
+                    $scope.begin = 0;
+                    $scope.pageCount = Math.ceil($scope.questions.length);
+
+
+
+                    $scope.prev = function() {
+                        if ($scope.begin > 0) {
+                            $scope.begin -= 1;
+                        }
+                    }
+
+                    $scope.next = function() {
+                        if ($scope.begin < ($scope.pageCount - 1)) {
+                            $scope.begin += 1;
+
+                        }
+                    }
+                    $scope.answers = {};
+                    $scope.correctCount = 0;
+                    $scope.showResult = function() {
+                        $scope.correctCount = 0;
+                        var qLength = $scope.questions.length;
+                        console.log(qLength);
+                        for (var i = 0; i < qLength; i++) {
+                            var answers = $scope.questions[i].Answers;
+                            var checked_to = $scope.questions[i].AnswerId;
+                            console.log(answers); //>>>>>
+
+                            $scope.questions[i].userAnswerCorrect = false;
+                            $scope.questions[i].userAnswer = $scope.answers[i];
+                            console.log($scope.answers[i]);
+
+                            for (var j = 0; j < answers.length; j++) {
+                                answers[j].selected = "donno";
+                                if ($scope.questions[i].userAnswer === answers[j].Text && answers[j].Id === checked_to) {
+                                    $scope.questions[i].userAnswerCorrect = true;
+                                    answers[j].selected = "true";
+                                    $scope.correctCount++;
+                                    break;
+                                } else if ($scope.questions[i].userAnswer === answers[j].Text && answers[j].Id !== checked_to) {
+                                    answers[j].selected = "false";
+                                    break;
+                                }
+                            }
+                        }
+
+                        //console.log($scope.answers);
+
+                    };
+                });
+
+            })
+
+        .controller('timerController', ['$scope', '$interval', function($scope, $interval) {
+            $scope.remainingTime = 60;
+            $scope.timeInterval = $interval(function() {
+                $scope.remainingTime = $scope.remainingTime - 1;
+                if ($scope.remainingTime == 0) {
+                    $interval.cancel($scope.timeInterval);
+                    //$scope.remainingTime = 60;
+                }
+            }, 1000);
+        }]);
+    </script>
+
+</body>
+
+</html>

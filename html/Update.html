@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://www.pngkey.com/png/full/420-4203829_otaku-usa-magazine-magazine-covers-anime.png" type="image/png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body ng-app="myapp">
+    <!---------------------------header navigation----------------------------------------->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+                        <span class="sr-only">navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="#"><img src="../images/W3Schools_logo1.png" style="width:60%;"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-main">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="home.html" class="active"> Home</a></li>
+                    <li><a href="home.html#about_us"> About Us</a> </li>
+                    <li><a href="home.html#contact">Contact</a></li>
+                    <li><a href="home.html#feedback">Feedback</a></li>
+                    <li><a href="home.html#fag"> F&A</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"></span> Account <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="" data-toggle="modal" data-target="#myModal">Log In</a></li>
+                            <li><a href="">Forgot Password</a></li>
+                            <li><a href="sign_up.html">Sign Up</a></li>
+                            <li class="divider"></li>
+                            <li><a href="">Log Out</a></li>
+                            <li><a href="#DoiMK">Change Password</a></li>
+                            <li><a href="#DoiTK">Profile</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    <!---------------------------Modal ----------------------------------------->
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title title1"><span style="color:orange">Log In</span></h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="myForm" ng-controller="validateCtrl" novalidate>
+                        <fieldset>
+                            <!-- Text input-->
+                            <div class="form-group" ng-class="{'has-error': loginForm.email.$invalid && loginForm.email.$touched}">
+                                <!-- <label class="col-md-3 control-label" for="email"></label> -->
+                                <div class="col-md-6">
+                                    <input name="email" ng-model="email" placeholder="Enter your email-id" class="form-control input-md " type="email" required />
+                                    <small ng-show="myForm.email.$dirty && myForm.email.$invalid"></small>
+                                    <small class="help-block" ng-show="myForm.email.$error.required">Please enter an Email Address</small>
+                                    <small ng-show="myForm.email.$error.email">Invalid email address.</small>
+                                </div>
+                            </div>
+                            <!-- Password input-->
+                            <div class="form-group">
+                                <!-- <label class="col-md-3 control-label" for="password"></label> -->
+                                <div class="col-md-6">
+                                    <input name="password" ng-model="password" placeholder="Enter your Password" class="form-control input-md " type="password" required />
+                                    <small ng-show="myForm.password.$dirty && myForm.password.$invalid"></small>
+                                    <small class="help-block" ng-show="myForm.password.$invalid && myForm.password.$touched">Password required</small>
+
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" ng-disabled="myForm.email.$dirty && myForm.email.$invalid || 
+                            myForm.password.$dirty && myForm.password.$invalid" ng-click="showResult()">Log in</button>
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal-fade -->
+    <!---------------------------main----------------------------------------->
+    <article>
+        <!---------------------------banner----------------------------------------->
+        <section id="banner">
+            <div class="login-wrapper ">
+                <div class="group-tabs">
+
+                    <div class="tab-content">
+                        <div id="DoiMK" class="tab-pane active" role="tabpanel">
+                            <div class="login-inner">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a data-toggle="tab" aria-controls="DOIMK" href="#DoiMK" role="tab">CHANGE PASSWORD</a></li>
+                                    <li role="presentation"><a data-toggle="tab" aria-controls="DOITK" href="#DoiTK" role="tab">UPDATE PROFILE</a></li>
+                                </ul>
+                                <form>
+                                    <h2 class="header-title text-center">CHANGE PASSWORD</h2>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input placeholder="Enter your email-id" class="form-control input-md" type="email">
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input placeholder="Enter your password" class="form-control input-md" type="password">
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input placeholder="Enter your new password" class="form-control input-md" type="password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input placeholder="Confirm password" class="form-control input-md" type="password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="EXECUTE" class="btn btn-primary btn-block">
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div id="DoiTK" class="tab-pane" role="tabpanel">
+                            <div class="login-inner">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a data-toggle="tab" aria-controls="DOIMK" href="#DoiMK" role="tab">CHANGE PASSWORD</a></li>
+                                    <li role="presentation"><a data-toggle="tab" aria-controls="DOITK" href="#DoiTK" role="tab">UPDATE PROFILE</a></li>
+                                </ul>
+                                <form>
+                                    <h2 class="header-title text-center">UPDATE PROFILE</h2>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input placeholder="Enter your name" class="form-control input-md" type="text">
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <select placeholder="Enter your gender" class="form-control input-md">
+                                            <option value="Male">Select Gender</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option> 
+                                        </select>
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input placeholder="Enter your college name" class="form-control input-md" type="text">
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input placeholder="Enter your email-id" class="form-control input-md" type="email">
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input id="mob" name="mob" placeholder="Enter your mobile number" class="form-control input-md" type="number">
+                                    </div>
+
+                                    <!-- Text input-->
+                                    <div class="form-group">
+                                        <input placeholder="Enter your password" class="form-control input-md" type="password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input placeholder="Confirm password" class="form-control input-md" type="password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="EXECUTE" class="btn btn-primary btn-block">
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+        </section>
+
+    </article>
+    <script type="text/javascript" src="../js/home.js"></script>
+
+</body>
+
+</html>
